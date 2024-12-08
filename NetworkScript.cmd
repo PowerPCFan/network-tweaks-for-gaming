@@ -92,8 +92,6 @@ for /f %%q in ('wmic path win32_networkadapter get GUID ^| findstr "{"') do reg 
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "MaxCacheTtl" /t REG_DWORD /d "1" /f > nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "MaxNegativeCacheTtl" /t REG_DWORD /d "0" /f > nul
 netsh int tcp set global autotuninglevel=disabled > nul
-wmic nicconfig where "IPEnabled=true" call SetSettingValue "InterruptModeration", 0 > nul
-
 
 echo Network tweaks applied successfully. Press any key to exit.
 pause > nul
